@@ -1,0 +1,51 @@
+#include "pch.h"
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
+using namespace std;
+
+int main()
+{
+srand(time(0));
+setlocale(LC_ALL, "Russian");
+
+struct node
+{
+int val;
+node *next;
+};
+
+node * head = 0;
+node * curr = head;
+
+int c1 = 50 + rand() % 50;
+int x = 1;
+int x1;
+for (x1=1;x1<=c1;x1++)
+{
+if (!head)
+{
+head = new node;
+head->val = x;
+head->next = NULL;
+
+curr = head;
+}
+else
+{
+curr->next = new node;
+curr = curr->next;
+curr->val = x;
+curr->next = NULL;
+}
+x += 2;
+}
+curr = head;
+while (curr != NULL)
+{
+cout « curr->val « " ";
+curr = curr->next;
+}
+cout « endl « endl;
+return 0;
+}
